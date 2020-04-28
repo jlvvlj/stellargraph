@@ -319,13 +319,6 @@ class EdgeData(ElementData):
     def __init__(self, shared, type_starts, node_data, node_default_type):
         super().__init__(shared, type_starts)
 
-        def get_node_type(node_id):
-            if node_data is not None:
-                ilocs = node_data.ids.to_iloc([node_id])
-                return node_data.type_of_iloc(ilocs)[0]
-            else:
-                return node_default_type
-
         # cache these columns to avoid having to do more method and dict look-ups
         self.sources = self._column(SOURCE)
         self.targets = self._column(TARGET)
